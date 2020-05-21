@@ -1,9 +1,9 @@
 package loose_coupling;
 
-public class Bmw implements Car {
+public class C implements X {
 	@Override
-	public int getSpeed() {
+	public int total() {
 		// TODO Auto-generated method stub
-		return 200;
+		return 50;
 	}
 }

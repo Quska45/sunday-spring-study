@@ -1,4 +1,4 @@
-package loose_coupling;
+package loose_coupling_bkj;
 
 import java.io.FileInputStream;
 import java.io.IOException;

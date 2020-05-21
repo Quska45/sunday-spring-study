@@ -1,9 +1,9 @@
-package loose_coupling;
+package loose_coupling_bkj;
 
-public class Audi implements Car {
+public class Bmw implements Car {
 	@Override
 	public int getSpeed() {
 		// TODO Auto-generated method stub
-		return 100;
+		return 200;
 	}
 }

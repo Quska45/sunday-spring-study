@@ -1,4 +1,4 @@
-package loose_coupling;
+package loose_coupling_bkj;
 
 public interface TV {
 	void powerOn();
