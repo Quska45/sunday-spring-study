@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
-	
+	<!-- annotation-config 대신 component-scan을 사용해준다. -->
+	<!-- <context:component-scan base-package="spring.di.*"></context:component-scan> -->
+	<!-- <context:annotation-config></context:annotation-config> -->
 	<!-- <bean id="exam" class="spring.di.entity.NewLecExam"> -->
 		<!-- setter 세팅 -->
 		<!-- <property name="kor" value="10"></property>
@@ -34,7 +38,12 @@
 	<!-- </bean> -->
 	
 	<!-- schema/p라는 처리기를 이용해서 처리할 수도 있다. 굳이 쓸 필요가 있나 싶다. -->
-	<bean id="exam" class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" />
+	<!-- 모호한 설정 -->
+	<!-- <bean class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" />
+	<bean class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" /> -->
+	<!-- 분명한 설정 -->
+	<!-- <bean id="exam1" class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" />
+	<bean id="exam2" class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" /> -->
 	
 	<!-- 정적인 방식으로 값을 추가하거나 만들어진 빈을 주입하는 방법도 있다. -->
 	<!-- <bean id="exams" class="java.util.ArrayList">
@@ -49,12 +58,12 @@
 	<!-- 어떤 리스트를 만들지 클래스를 지정해줘야한다. -->
 	<util:list id="exams" list-class="java.util.ArrayList">
 		<bean class="spring.di.entity.NewLecExam" p:kor="10" p:eng="10" />
-		<ref bean="exam"/>
+		<!-- <ref bean="exam1"/> -->
 	</util:list>
 	
-	<bean id="console" class="spring.di.ui.InlineExamConsole">
-		<!-- 원래는 setExam이라는 함수를 호출해야 하는 것이지만 set은 생략할 수 있기 때문에 exam으로 쓰면 된다. -->
+	<!-- <bean id="console" class="spring.di.ui.InlineExamConsole">
+		원래는 setExam이라는 함수를 호출해야 하는 것이지만 set은 생략할 수 있기 때문에 exam으로 쓰면 된다.
 		<property name="exam" ref="exam"></property>
-	</bean>
+	</bean> -->
 
 </beans>

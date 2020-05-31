@@ -2,7 +2,7 @@ package car.ui;
 
 import car.entity.Tire;
 
-public class Bmw implements Car {
+public class Bmw implements Car{
 
 	Tire tire;
 	
@@ -10,6 +10,7 @@ public class Bmw implements Car {
 //	public Bmw(Tire tire) {
 //		// TODO Auto-generated constructor stub
 //		this.tire = tire;
+//		
 //	}
 	
 	//2. 객체를 setter로 주입 해줄 수도 있다.
