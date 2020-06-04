@@ -10,8 +10,6 @@ public class Bmw implements Car{
 //	public Bmw(Tire tire) {
 //		// TODO Auto-generated constructor stub
 //		this.tire = tire;
-//		
-//	}
 	
 	//2. 객체를 setter로 주입 해줄 수도 있다.
 	public void setTire(Tire tire) {
