@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<!-- 1. exam을 생성했다. -->
+	<bean id="target" class="spring.aop.entity.NewLecExam" p:kor="200" p:eng="1" p:math="1" p:com="1"></bean>
+	<!-- 2. proxy생성 -->
+	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice"></bean>
+	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice"></bean>
+	<bean id="logAfterReturningAdvice" class="spring.aop.advice.LogAfterReturningAdvice"></bean>
+	<bean id="logAfterThrowingAdvice" class="spring.aop.advice.LogAfterThrowingAdvice"></bean>
+	<bean id="proxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<!-- 
+			인자는 3가지가 있었다.
+			1. target에 해당하는 객체의 loader
+			2. target이 구현하고 있는 인터페이스 
+			3. InvocationHandler를 구현하는 클래스 객체
+			리스트는 당연히 여러개 넣을 수 있다.
+		-->
+		<property name="target" ref="target"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>logAroundAdvice</value>
+				<value>logBeforeAdvice</value>
+				<value>logAfterReturningAdvice</value>
+				<value>logAfterThrowingAdvice</value>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -3,7 +3,6 @@
   <groupId>com.newlecture</groupId>
   <artifactId>Spring-Practice</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
     <dependency>
@@ -51,6 +50,12 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <archive>
+              <manifest>
+                  <addClasspath>true</addClasspath>
+                  <mainclass>spring.di.Program</mainclass>
+              </manifest>
+          </archive>
         </configuration>
       </plugin>
     </plugins>

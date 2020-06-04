@@ -1,0 +1,9 @@
+각 링크 별로 개념이 정리 되어 있습니다.
+
+https://wonyong-jang.github.io/java/2020/05/17/Java-Loose-coupling.html
+
+https://wonyong-jang.github.io/spring/2020/05/19/Spring-Inversion-Of-Control.html
+
+https://wonyong-jang.github.io/spring/2020/05/18/Spring-Dependency-Injection.html
+
+https://wonyong-jang.github.io/spring/2020/03/16/Spring-MVC1-MVC2.html
