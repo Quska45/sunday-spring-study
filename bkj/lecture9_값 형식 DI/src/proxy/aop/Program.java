@@ -17,7 +17,7 @@ public class Program {
 		//첫 번째 인자 - NewLecExam의 기능을 사용할 수 있도록 사용하려는 객체의 정보를 넣어준다. 정확히는 클래스의 loader를 넣어주는 것이다.
 		//첫 번째 인자  - 구현하고 있는 인터페이스들의 정보를 넣어준다. 여러개를 구현하고 있으면 전부 넣어주면 된다.
 		//세 번째 인자  - 보조 업무를 꽂을 수 있는 부분이다. InvocationHandler라는 인터페이스를 구현하는 클래스를 객체화하는 작업을 해줘야 한다.
-		//예제에서는 클래스를 작성하지않고 자바에서 제공하는 익명함수를 쓰도록 하겠다. ㅊ
+		//예제에서는 클래스를 작성하지않고 자바에서 제공하는 익명함수를 쓰도록 하겠다.
 		Exam proxy = (Exam) Proxy.newProxyInstance(NewLecExam.class.getClassLoader(), new Class[] {Exam.class}, new InvocationHandler() {
 			
 			@Override

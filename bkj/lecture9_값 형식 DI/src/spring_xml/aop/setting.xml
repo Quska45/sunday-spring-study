@@ -4,35 +4,33 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
 
-	<!-- 1. exam을 생성했다. -->
+	<aop:config>
+		<aop:aspect>
+			<aop:after method=""/>
+			<aop:after-returning method=""/>
+			<aop:after-throwing method=""/>
+			<aop:around method=""/>
+			<aop:before method=""/>
+			<aop:before method=""/>
+			<aop:declare-parents types-matching="" implement-interface=""/>
+			<aop:pointcut expression="" id=""/>
+		</aop:aspect>
+	</aop:config>
+	
+	
 	<bean id="target" class="spring.aop.entity.NewLecExam" p:kor="100" p:eng="1" p:math="1" p:com="1"></bean>
-	<!-- 2. proxy생성 -->
+	
 	<bean id="logAroundAdvice" class="spring.aop.advice.LogAroundAdvice"></bean>
 	<bean id="logBeforeAdvice" class="spring.aop.advice.LogBeforeAdvice"></bean>
 	<bean id="logAfterReturningAdvice" class="spring.aop.advice.LogAfterReturningAdvice"></bean>
 	<bean id="logAfterThrowingAdvice" class="spring.aop.advice.LogAfterThrowingAdvice"></bean>
-	
-	<!-- 네임을 기준으로 하는 포인트컷을 만들어 볼 것이다. -->
-	<!-- total만 포인트 컷으로 하는 위빙작업을 해준 것이다. -->
-	<!-- <bean id="classicPointCut" class="org.springframework.aop.support.NameMatchMethodPointcut">
-		<property name="mappedName" value="total"></property>
-	</bean> -->
-	
-	<!-- pointCut에 advisor에 대한 설정을 추가할 수 있도록 하는 클래스도 있다. 이렇게 하면 pointcut설정을 더 단순화 할 수 있다. -->
-	<!-- <bean id="classicBeforAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
-		<property name="advice" ref="logBeforeAdvice"></property>
-		<property name="mappedNames">
-			<list>
-				<value>total</value>
-				<value>avg</value>
-			</list>
-		</property>
-	</bean> -->
-	<!-- 함수설정을 패턴화해서 사용할 수도 있다. -->
+
 	<bean id="classicBeforAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
 		<property name="advice" ref="logBeforeAdvice"></property>
 		<property name="patterns">
@@ -41,33 +39,13 @@
 			</list>
 		</property>
 	</bean>
+	
 	<bean id="classicAroundAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
 		<property name="advice" ref="logAroundAdvice"></property>
 		<property name="mappedName" value="total"></property>
 	</bean>
 	
-	
-	<!-- advice를 포인트컷과 연결하는 advisor를 추가해야 한다. -->
-	<!-- advisor를 proxy와 연결해주는 작업이 필요하다. -->
-	<!-- advice하나당 advisor하나를 만들어 줘야 한다. -->
-	<!-- <bean id="classicBeforAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
-		<property name="advice" ref="logBeforeAdvice"></property>
-		<property name="pointcut" ref="classicPointCut"></property>
-	</bean>
-	
-	<bean id="classicAroundAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
-		<property name="advice" ref="logBeforeAdvice"></property>
-		<property name="mappedName" value=""></property>
-	</bean> -->
-	
 	<bean id="exam" class="org.springframework.aop.framework.ProxyFactoryBean">
-		<!-- 
-			인자는 3가지가 있었다.
-			1. target에 해당하는 객체의 loader
-			2. target이 구현하고 있는 인터페이스 
-			3. InvocationHandler를 구현하는 클래스 객체
-			리스트는 당연히 여러개 넣을 수 있다.
-		-->
 		<property name="target" ref="target"></property>
 		<property name="interceptorNames">
 			<list>
@@ -78,4 +56,6 @@
 			</list>
 		</property>
 	</bean>
+	
+	
 </beans>
