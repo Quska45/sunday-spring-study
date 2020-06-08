@@ -9,14 +9,14 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-public class HelloController {
+public class HelloController2 {
 	@Autowired
 	private TestRepository TestRepository;
 	
-    @RequestMapping("/api/hello")
-    public String hello() {
+    @RequestMapping("/test")
+    public String hello12() {
     	List<Test> list = TestRepository.findAll();
     	System.out.println(123123);
-        return "Hello,12321 the time at the server is now " + new Date() + "\n" + list.get(0);
+        return "Hello, the time at the server is now " + new Date() + "\n" + list.get(0);
     }
 }
