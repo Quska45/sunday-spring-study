@@ -1,8 +1,14 @@
 package spring.di.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class NewLecExam implements Exam {
     
+    @Value("#{config['exam.kor']}")
     private int kor;
+    @Value("#{config['exam.eng']}")
     private int eng;
     private int math;
     private int com;
@@ -18,13 +24,7 @@ public class NewLecExam implements Exam {
         this.com = com;
     }
     
-    public int getKor() {
-        return kor;
-    }
 
-    public void setKor(int kor) {
-        this.kor = kor;
-    }
 
     public int getEng() {
         return eng;

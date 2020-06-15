@@ -30,24 +30,24 @@ public class Program {
         ApplicationContext context =
                 new ClassPathXmlApplicationContext("spring/di/setting.xml");
         
-        Exam exam = context.getBean(Exam.class);
-        System.out.println(exam.toString());
+        //Exam exam = context.getBean(Exam.class);
+        //System.out.println(exam.toString());
         
         // 1. id 로 꺼내는 경우 (형 변환 해야 함)
-        ExamConsole console1 = (ExamConsole) context.getBean("console");
+        //ExamConsole console = (ExamConsole) context.getBean("console");
+        ExamConsole console = context.getBean(ExamConsole.class);
         
         // 2. 타입으로 꺼내는 경우 
-        ExamConsole console2 = context.getBean(ExamConsole.class);
+        //ExamConsole console2 = context.getBean(ExamConsole.class);
         
-        console2.print();
+        console.print();
         // 자바 소스 코드에서 나타날 변화를 설정 (setting.xml로 분리 시킴으로써 Loose Coupling을 이룰수 있다. )
         
         //List<Exam> exams = new ArrayList<>();
-        List<Exam> exams = (List<Exam>) context.getBean("exams");
-        exams.add(new NewLecExam(1,1,1,1));
+        //List<Exam> exams = (List<Exam>) context.getBean("exams");
         
-        for(Exam e : exams)
-            System.out.println(e);
+        //for(Exam e : exams)
+        //    System.out.println(e);
     }
     
 }
