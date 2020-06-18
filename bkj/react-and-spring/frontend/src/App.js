@@ -5,6 +5,10 @@ import './App.css';
 //헤더
 import mainHeader from './component/mainHeader.js';
 
+//react-trello
+import data from "./data/data.json";
+import Board from "react-trello";
+
 function App () {
     const [message, setMessage] = useState("");
     const [chageMessage, setChangeMessage] = useState(0);
@@ -23,18 +27,23 @@ function App () {
     },[message, chageMessage]);
     
     return (
+        // <div className="App">
+        //     <mainHeader>123</mainHeader>
+        //     <header className="App-header">
+        //     <img src={logo} className="App-logo" alt="logo"/>
+        //     <h1 className="App-title">{message}</h1>
+        //     </header>
+        //     <p className="App-intro">
+        //     To get started, edit <code>src/App.js</code> and save to reload.
+        //     <button onClick={() => setChangeMessage(chageMessage + 1)}>+</button>
+        //     </p>
+        // </div>
+
         <div className="App">
-        <mainHeader>123</mainHeader>
-        <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-        <h1 className="App-title">{message}</h1>
-        </header>
-        <p className="App-intro">
-        To get started, edit <code>src/App.js</code> and save to reload.
-        <button onClick={() => setChangeMessage(chageMessage + 1)}>+</button>
-    </p>
-    </div>
-)
+            <h1>react-trello demo</h1>
+            <Board data={data} draggable />
+        </div>
+    )
 }
 
 export default App;
