@@ -46,7 +46,7 @@
        <dependency>
            <groupId>ch.qos.logback</groupId>
            <artifactId>logback-classic</artifactId>
-           <version>1.1.2</version>
+           <version>1.1.3</version>
            <exclusions>
                <exclusion>
                    <groupId>org.slf4j</groupId>
@@ -58,15 +58,21 @@
        <dependency>
            <groupId>ch.qos.logback</groupId>
            <artifactId>logback-core</artifactId>
-           <version>1.1.2</version>
+           <version>1.1.3</version>
        </dependency>
-       <!-- 1.end -->
        
-       <!-- 2. JPA설정 -->
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
-		
-
-       <!-- 2. end -->
+       <!-- 1. 웹크롤링 -->
+       <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.8.3</version>
+	   </dependency>
+	   
+	   <!-- 2. mongo db -->
+	   <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
