@@ -2,6 +2,7 @@ package no.kantega.springandreact;
 
 import org.springframework.data.annotation.Id;
 
+//예제용 클래스
 public class Customer {
 
   @Id
