@@ -7,10 +7,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import no.kantega.springandreact.collection.Content;
 
 public interface ContentRepository extends MongoRepository<Content, String> {
-
-  @Override
-	default List<Content> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}  
+ 
 }
