@@ -1,27 +1,44 @@
 package no.kantega.springandreact;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import no.kantega.springandreact.collection.Content;
+import no.kantega.springandreact.crawling.impl.ZeroChoCrawling;
 import no.kantega.springandreact.repository.ContentRepository;
 
 @SpringBootApplication
-public class SpringAndReactApplication {
+public class SpringAndReactApplication implements CommandLineRunner{
 
 	//예제용
 //	@Autowired
 //	private CustomerRepository customRepository;
 	
+	@Autowired
+	private ContentRepository contentRepository;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringAndReactApplication.class, args);
 	}
 
-	//예제용
-//	@Override
-//	public void run(String... args) throws Exception {
-//		// TODO Auto-generated method stub
+	@Override
+	public void run(String... args) throws Exception {
+		contentRepository.deleteAll();
+		
+		ZeroChoCrawling crawlingDataMaker = new ZeroChoCrawling();
+		
+		List<Content> contentList = crawlingDataMaker.crawling();
+		
+		for(Content content : contentList){
+			contentRepository.save(content);
+		}
+		
+		// TODO Auto-generated method stub
+//		예제용
 //		customRepository.deleteAll();
 //
 //	    // save a couple of customers
@@ -46,6 +63,6 @@ public class SpringAndReactApplication {
 //	    for (Customer customer : customRepository.findByLastName("Smith")) {
 //	      System.out.println(customer);
 //	    }
-//	}
+	}
 	
 }
