@@ -1,20 +1,15 @@
 package no.kantega.springandreact;
 
-import java.util.Iterator;
 import java.util.List;
 
-import org.jsoup.nodes.Element;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -42,13 +37,14 @@ public class DemoApplicationTest {
     		buffer.wait(5000);
 		}
 	    
-	    List<WebElement> title = driver.findElements(By.cssSelector("#resultArticle > div > div.result_article > div.wrap_article_list > ul > li > a > div.post_title.has_image > strong"));
-	    System.out.println(title.size());
-	    Iterator<WebElement> ie1 = title.iterator();
-	    while(ie1.hasNext()) {
-	    	System.out.println(ie1.next().getText());
-	    }
+	    List<WebElement> contents = driver.findElements(By.cssSelector("#resultArticle > div > div.result_article > div.wrap_article_list > ul > li > a > div.post_title.has_image"));
 	    
+	    for(WebElement element : contents) {
+	    	System.out.println("Title : " + element.findElement(By.cssSelector("strong")).getText());
+	    	System.out.println("공유수 : " + element.findElement(By.cssSelector("span > span:nth-child(2)")).getText());
+	    	System.out.println("댓글수 : " + element.findElement(By.cssSelector("span > span:nth-child(5)")).getText());
+	    	System.out.println("작성자 : " + element.findElement(By.cssSelector("span > span:nth-child(10)")).getText());
+	    }
 	    
 	    driver.quit(); // 브라우저 종료
 	}
